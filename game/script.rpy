@@ -29,45 +29,59 @@ label start:
     return
 
 label prompt_1:
-    d "Dialogue prompt #1"
+    show d pleading
+    d "Hello, I’m terribly hungry; starving, in fact."
+    show d neutral
+    d "Will you give me breakfast?"
+
     menu:
-        "Give Food":
+        "Give Duckie breakfast":
             $ times_fed += 1
             jump prompt_2
-        "Give Pets":
+        "Pet her":
             $ times_pet += 1
             jump prompt_2
-        "Do nothing":
+        "Ignore her":
             jump prompt_2
     return
 
 label prompt_2:
     if times_pet > 2:
         jump overstimulated
-    d "Dialogue prompt #2"
+    show d neutral
+    d "I’m still hungry. You’re killing me."
+    show d intense
+    d "Give me food."
+
     menu:
-        "Give Food":
+        "Give Duckie dry food":
             $ times_fed += 1
             jump prompt_3
-        "Give Pets":
+        "Pet her":
             $ times_pet += 1
             jump prompt_3
-        "Do nothing":
+        "Ignore her":
             jump prompt_3
     return
 
 label prompt_3:
     if times_pet > 2:
         jump overstimulated
-    d "Dialogue prompt #3"
+
+    show d annoyed
+    d "I can’t believe you don’t feed me ever."
+    show d pleading
+    d "Ever ever ever. I’m starving."
+    d "Feed me?"
+
     menu:
-        "Give Food":
+        "Give Duckie dry food":
             $ times_fed += 1
             jump prompt_4
-        "Give Pets":
+        "Pet her":
             $ times_pet += 1
             jump prompt_4
-        "Do nothing":
+        "Ignore her":
             jump prompt_4
     return
 
@@ -75,15 +89,19 @@ label prompt_3:
 label prompt_4:
     if times_pet > 2:
         jump overstimulated
-    d "Dialogue prompt #4"
+    
+    show d sweet
+    d "Hello I love you soooooo much. Wow you’ve never seen me be this sweet before ever. Right?"
+    d "Guess you’ve gotta feed me to reward me for my good behavior."
+
     menu:
-        "Give Food":
+        "Give Duckie dry food":
             $ times_fed += 1
             jump prompt_5
-        "Give Pets":
+        "Pet her":
             $ times_pet += 1
             jump prompt_5
-        "Do nothing":
+        "Ignore her":
             jump prompt_5
     return
 
@@ -91,15 +109,18 @@ label prompt_4:
 label prompt_5:
     if times_pet > 2:
         jump overstimulated
-    d "Dialogue prompt #5"
+
+    show d intense
+    d "IT’S DINNER TIME HELLO HELLO IM HUNGRY HELLO"
+
     menu:
-        "Give Food":
+        "Give Duckie dinner":
             $ times_fed += 1
             jump determine_end
-        "Give Pets":
+        "Pet her":
             $ times_pet += 1
             jump determine_end
-        "Do nothing":
+        "Ignore her":
             jump determine_end
     return
 
@@ -118,21 +139,51 @@ label determine_end:
 
     
 label good_ending:
-    "good ending here!"
+    show d sweet
+    d "Hmmmm. Today has been adequate."
+    show d neutral
+    d "I’m still going to get the zoomies late at night and I might chew a bit of cardboard."
+    show d sweet
+    d "But I’m also going to sit in your lap and purr very faintly for a solid 20 mins until your foot falls asleep."
+    show d annoyed
+    d "Then I’ll become mildly violent."
+    hide d
+    "Well, I think that’s the best you can ask for. You win!"
+
     return
 
 label understimulated:
-    "bad end: didn't pet her enough"
+    show d annoyed
+    d "I’m fed, but I’m understimulated and I’m going to chew up all your cardboard and paper now. Screw you, man!"
+    hide d
+    "Uh oh! You ignored your cat and now she’s a problem. Do better!"
+
     return
 
 label overstimulated:
-    "you pet duckie too much"
+    show d angry
+    d "How dare you TOUCH me? I’m going to BITE you now."
+    hide d
+    "You pet duckie too many times! Now you’ve been injured, go get a bandaid. You lose!"
+
     return
 
 label starved:
-    "you didnt feed her enough"
+    show d annoyed
+    d "I’m STARVING and you didn’t feed me."
+    show d angry
+    d "Now I’m ANGRY and I’m going to hiss at you."
+    hide d
+    "Wow, she hissed at you. That feels bad emotionally! You lose."
+
     return
 
 label overfed:
-    "you fed her too much"
+    show d intense
+    d "Haha, you FOOL! I tricked you and now I’ve eaten too much."
+    show d annoyed
+    d "I’m going to have the zoomies all night long, and maybe poop on the floor."
+    hide d
+    "Oops, you gave her too much food! Now the vet’s going to call her plump again. You lose!"
+
     return
