@@ -12,15 +12,7 @@ default times_pet = 0
 
 label start:
 
-    # Show a background. This uses a placeholder by default, but you can
-    # add a file (named either "bg room.png" or "bg room.jpg") to the
-    # images directory to show it.
-
     scene bg room
-
-    # This shows a character sprite. A placeholder is used, but you can
-    # replace it by adding a file named "eileen happy.png" to the images
-    # directory.
 
     show d neutral
 
@@ -105,6 +97,8 @@ label prompt_5:
     return
 
 label determine_end:
+    if times_pet > 2:
+        jump overstimulated
     if times_fed == 3 and times_pet == 2:
         jump good_ending
     if times_fed == 3 and times_pet < 2:
