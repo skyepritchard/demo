@@ -7,6 +7,13 @@ define d = Character("Duckie")
 default times_fed = 0
 default times_pet = 0
 
+image d neutral = "images/Duckie_Neutral.png"
+image d annoyed = "images/Duckie_Annoyed.png"
+image d sweet = "images/Duckie_Sweet.png"
+image d angry = "images/Duckie_Angry.png"
+image d pleading = "images/Duckie_Pleading.png"
+image d intense = "images/Duckie_Intense.png"
+
 
 # The game starts here.
 
